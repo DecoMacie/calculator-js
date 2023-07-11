@@ -1,3 +1,9 @@
+:root {
+  --bkground: rgba(0, 0, 0, 0.85);
+  --btns: rgba(0, 0, 0, 0.75);
+  --btnsHover: rgba(0, 0, 0, 0.5);
+}
+
 *,
 *::after,
 *::before {
@@ -6,24 +12,61 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--bkground);
+}
+
 .calculator-grid {
   display: grid;
   align-content: center;
   justify-content: center;
-  min-height: auto;
-  grid-template-columns: repeat(4, 50px);
+  grid-template-columns: repeat(4, 100px);
   grid-template-rows: minmax(75px, auto) repeat(5, 50px);
+  min-height: 100vh;
 }
 
 .calculator-grid > button {
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: var(--btns);
   color: white;
   cursor: pointer;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid var(--bkground);
+  border-radius: 5px;
 }
 
 .calculator-grid > button:hover {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: var(--btnsHover);
+}
+
+.large-button-horizontal {
+  grid-column: span 2;
+}
+
+.large-button-vertical {
+  grid-row: span 2;
+}
+
+.screen-output {
+  grid-column: 1 / -1;
+  background-color: var(--bkground);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 5px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.screen-output .operand-one {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+.screen-output .operand-two {
+  font-size: 2rem;
+  color: white;
 }
