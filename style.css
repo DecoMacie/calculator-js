@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.calculator-grid {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  min-height: auto;
+  grid-template-columns: repeat(4, 50px);
+  grid-template-rows: minmax(75px, auto) repeat(5, 50px);
+}
+
+.calculator-grid > button {
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid black;
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
