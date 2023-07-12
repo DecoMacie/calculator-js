@@ -18,6 +18,13 @@ body {
   background: var(--bkground);
 }
 
+/* .logo {
+  -webkit-mask-image: url(images/numbers.png);
+  mask-image: url(images/numbers.png);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+} */
+
 .calculator-grid {
   display: grid;
   align-content: center;
