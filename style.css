@@ -56,7 +56,7 @@ body {
   grid-row: span 2;
 }
 
-.screen-output {
+.display {
   grid-column: 1 / -1;
   background-color: var(--bkground);
   display: flex;
@@ -68,12 +68,12 @@ body {
   word-break: break-all;
 }
 
-.screen-output .operand-one {
+.display .operand-one {
   font-size: 0.75rem;
   color: gray;
 }
 
-.screen-output .operand-two {
+.display .operand-two {
   font-size: 2rem;
   color: white;
 }
