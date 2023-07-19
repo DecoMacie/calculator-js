@@ -47,6 +47,10 @@ digitsBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     calculator.nrConcat(btn.innerText);
     calculator.showOnScreen();
-    console.log("click");
   });
+});
+
+allclearBtn.addEventListener("click", () => {
+  calculator.allClear();
+  calculator.showOnScreen();
 });
