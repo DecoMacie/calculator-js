@@ -27,7 +27,7 @@ class Calculator {
   }
 
   nrConcat(digit) {
-    this.op1 = digit;
+    this.op1 = String(this.op1 + digit);
   }
 
   showOnScreen() {
