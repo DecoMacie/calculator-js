@@ -27,7 +27,8 @@ class Calculator {
   }
 
   nrConcat(digit) {
-    this.op1 = String(this.op1 + digit);
+    if (digit === "." && this.op1.includes(".")) return;
+    else this.op1 = String(this.op1 + digit);
   }
 
   showOnScreen() {
@@ -38,7 +39,9 @@ class Calculator {
 
   chooseOp() {}
 
-  deleteItem() {}
+  deleteItem() {
+    this.op1 = String(this.op1).slice(0, -1);
+  }
 }
 
 const calculator = new Calculator(topScreen, bottomScreen);
@@ -52,5 +55,20 @@ digitsBtn.forEach((btn) => {
 
 allclearBtn.addEventListener("click", () => {
   calculator.allClear();
+  calculator.showOnScreen();
+});
+
+iqualsBtn.addEventListener("click", () => {
+  calculator.iqual();
+  calculator.showOnScreen();
+});
+
+// operationBtn.addEventListener("click", () => {
+//   calculator.chooseOp(btn.innerText);
+//   calculator.showOnScreen();
+// });
+
+delBtn.addEventListener("click", () => {
+  calculator.deleteItem();
   calculator.showOnScreen();
 });
