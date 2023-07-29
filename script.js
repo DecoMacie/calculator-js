@@ -33,11 +33,22 @@ class Calculator {
 
   showOnScreen() {
     this.bottomScreen.innerText = this.op1;
+    this.topScreen.innerText = this.op2;
   }
 
   iqual() {}
 
-  chooseOp() {}
+  chooseOp(operation) {
+    if (this.op1 === "") {
+      return;
+    } else if (this.op2 !== "") {
+      this.iqual();
+    }
+    this.op2;
+    this.operation = operation;
+    this.op2 = this.op1;
+    this.op1 = "";
+  }
 
   deleteItem() {
     this.op1 = String(this.op1).slice(0, -1);
@@ -63,10 +74,12 @@ iqualsBtn.addEventListener("click", () => {
   calculator.showOnScreen();
 });
 
-// operationBtn.addEventListener("click", () => {
-//   calculator.chooseOp(btn.innerText);
-//   calculator.showOnScreen();
-// });
+operationBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    calculator.chooseOp(btn.innerText);
+    calculator.showOnScreen();
+  });
+});
 
 delBtn.addEventListener("click", () => {
   calculator.deleteItem();
