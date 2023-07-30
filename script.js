@@ -13,6 +13,7 @@ console.log(allclearBtn);
 console.log(topScreen);
 console.log(iqualsBtn);
 
+// ---------- CLASS DECLARATION ----------
 class Calculator {
   constructor(topScreen, bottomScreen) {
     this.topScreen = topScreen;
@@ -36,7 +37,31 @@ class Calculator {
     this.topScreen.innerText = this.op2;
   }
 
-  iqual() {}
+  iqual() {
+    let a = parseFloat(this.op2);
+    let b = parseFloat(this.op1);
+    let result;
+    switch (this.operation) {
+      case "+":
+        result = a + b;
+        break;
+      case "-":
+        result = a - b;
+        break;
+      case "*":
+        result = a * b;
+        break;
+      case "÷":
+        result = a / b;
+        break;
+
+      default:
+        return;
+        break;
+    }
+    this.allClear();
+    this.op1 = result;
+  }
 
   chooseOp(operation) {
     if (this.op1 === "") {
@@ -54,9 +79,11 @@ class Calculator {
     this.op1 = String(this.op1).slice(0, -1);
   }
 }
+// ---------- END OF CLASS DECLARATION ----------
 
 const calculator = new Calculator(topScreen, bottomScreen);
 
+// ---------- CLICK EVENTS FOR EACH BUTTON ON THE CALCULATOR ----------
 digitsBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     calculator.nrConcat(btn.innerText);
