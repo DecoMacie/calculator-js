@@ -4,14 +4,14 @@ let topScreen = document.querySelector(".operand-one");
 let bottomScreen = document.querySelector(".operand-two");
 let delBtn = document.querySelector(".delete");
 let allclearBtn = document.querySelector(".allClear");
-let iqualsBtn = document.querySelector(".iquals");
+let equalsBtn = document.querySelector(".equals");
 
-console.log(digitsBtn);
-console.log(operationBtn);
-console.log(delBtn);
-console.log(allclearBtn);
-console.log(topScreen);
-console.log(iqualsBtn);
+// console.log(digitsBtn);
+// console.log(operationBtn);
+// console.log(delBtn);
+// console.log(allclearBtn);
+// console.log(topScreen);
+// console.log(equalsBtn);
 
 // ---------- CLASS DECLARATION ----------
 class Calculator {
@@ -32,12 +32,32 @@ class Calculator {
     else this.op1 = String(this.op1 + digit);
   }
 
-  showOnScreen() {
-    this.bottomScreen.innerText = this.op1;
-    this.topScreen.innerText = this.op2;
+  formatNr(nr) {
+    const intDigits = parseFloat(String(nr).split(".")[0]);
+    const decDigits = String(nr).split(".")[1];
+    let formatInt;
+    if (isNaN(intDigits)) {
+      formatInt = "0";
+    } else {
+      formatInt = intDigits.toLocaleString("en", { maximumFractionDigits: 0 });
+    }
+    if (decDigits == null) {
+      return formatInt;
+    } else {
+      return `${formatInt}.${decDigits}`;
+    }
   }
 
-  iqual() {
+  showOnScreen() {
+    this.bottomScreen.innerText = this.formatNr(this.op1);
+    if (this.operation != null) {
+      this.topScreen.innerText = `${this.formatNr(this.op2)} ${this.operation}`;
+    } else {
+      this.topScreen.innerText = "";
+    }
+  }
+
+  equal() {
     let a = parseFloat(this.op2);
     let b = parseFloat(this.op1);
     let result;
@@ -67,7 +87,7 @@ class Calculator {
     if (this.op1 === "") {
       return;
     } else if (this.op2 !== "") {
-      this.iqual();
+      this.equal();
     }
     this.op2;
     this.operation = operation;
@@ -96,8 +116,8 @@ allclearBtn.addEventListener("click", () => {
   calculator.showOnScreen();
 });
 
-iqualsBtn.addEventListener("click", () => {
-  calculator.iqual();
+equalsBtn.addEventListener("click", () => {
+  calculator.equal();
   calculator.showOnScreen();
 });
 
